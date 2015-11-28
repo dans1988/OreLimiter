@@ -26,6 +26,7 @@ public class OreLimiter extends JavaPlugin {
     private final Map<Material, Material> replacements;
 
     private Boolean running;
+    private OreLimiterMode oreLimiterMode;
 
     public OreLimiter() {
         this.oreRates = Maps.newHashMap();
@@ -72,8 +73,12 @@ public class OreLimiter extends JavaPlugin {
                 replacements.put(material, Material.STONE);
             }
         }
+        
+        
 
         running = configuration.getBoolean("enabled");
+        
+        oreLimiterMode = OreLimiterMode.valueOf(configuration.getString("mode"));
 
     }
 
@@ -111,5 +116,14 @@ public class OreLimiter extends JavaPlugin {
         replacements.put(material, replacement);
     }
 
+    public OreLimiterMode getOreLimiterMode() {
+        return oreLimiterMode;
+    }
 
+    public void setOreLimiterMode(OreLimiterMode oreLimiterMode) {
+        this.oreLimiterMode = oreLimiterMode;
+    }
+
+
+    
 }

@@ -11,6 +11,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.generator.BlockPopulator;
 import pl.dans.plugins.ores.OreLimiter;
+import pl.dans.plugins.ores.OreLimiterMode;
 import pl.dans.plugins.ores.OreLocation;
 import pl.dans.plugins.ores.OreTraverser;
 
@@ -41,21 +42,32 @@ public class OreLimiterPopulator extends BlockPopulator {
                     
                     Block block = world.getBlockAt(chunk.getX() * 16 + x, y, chunk.getZ() * 16 + z);
                     
+                    
                     Map<Material, Integer> rates = oreLimiter.getOreRates();
-                    Map<Material, Material> replacements = oreLimiter.getReplacements();
                     
                     OreLocation oreLocation = new OreLocation(block.getX(), block.getY(), block.getZ());
                     if (rates.keySet().contains(block.getType())
                             && rates.get(block.getType()) < 100
                             && !markedOres.contains(oreLocation)) {
                         
+                        
+                        Map<Material, Material> replacements = oreLimiter.getReplacements();
+                        
+                        
                         boolean replace = random.nextInt(RANDOM_BOUNDS) > oreLimiter.getOreRates().get(block.getType());
                         
-                        OreTraverser oreTraverser = new OreTraverser();
-                        oreTraverser.traverseVein(oreLocation, block.getType(), world, replace, replacements.get(block.getType()));
-                        List<OreLocation> vein = oreTraverser.getVein();
+                        if (OreLimiterMode.VEIN.equals(oreLimiter.getOreLimiterMode())) {
                         
-                        markedOres.addAll(vein);
+                            OreTraverser oreTraverser = new OreTraverser();
+                            oreTraverser.traverseVein(oreLocation, block.getType(), world, replace, replacements.get(block.getType()));
+                            List<OreLocation> vein = oreTraverser.getVein();
+                            markedOres.addAll(vein);
+                        } else if (OreLimiterMode.ORE.equals(oreLimiter.getOreLimiterMode()) && replace) {
+                            block.setType(replacements.get(block.getType()));
+                            markedOres.add(oreLocation);
+                        }
+                        
+                        
                         
                     }
                 }

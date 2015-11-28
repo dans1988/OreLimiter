@@ -9,6 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import pl.dans.plugins.ores.OreLimiter;
+import pl.dans.plugins.ores.OreLimiterMode;
 
 public class OreLimiterCommand implements CommandExecutor {
     
@@ -49,6 +50,9 @@ public class OreLimiterCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.DARK_PURPLE + material.name() + ": " + ChatColor.YELLOW + oreLimiter.getReplacements().get(material).name());
             }
                 
+        }  else if (subcommand.compareToIgnoreCase("mode") == 0) {
+            sender.sendMessage(ChatColor.DARK_PURPLE + "OreLimiter mode is set to " + ChatColor.YELLOW + oreLimiter.getOreLimiterMode().name());
+                
         } else if (subcommand.compareToIgnoreCase("setrate") == 0) {
             
             if (arg.length < 3) {
@@ -80,7 +84,7 @@ public class OreLimiterCommand implements CommandExecutor {
             oreLimiter.setRate(material, rate);
             Bukkit.broadcastMessage(oreLimiter.getMessageStart() + material.name() + " rate set was set to " + rate + "%");
             
-        }  else if (subcommand.compareToIgnoreCase("setreplacement") == 0) {
+        } else if (subcommand.compareToIgnoreCase("setreplacement") == 0) {
             
             if (arg.length < 3) {
                 sender.sendMessage(ChatColor.RED + "Example usage: /orelimiter setreplacement GOLD_ORE STONE");
@@ -110,7 +114,24 @@ public class OreLimiterCommand implements CommandExecutor {
             oreLimiter.setReplacement(material, replacement);
             Bukkit.broadcastMessage(oreLimiter.getMessageStart() + "Replacement of " + material.name() + " was set to " + replacement.name());
             
-        } 
+        } else if (subcommand.compareToIgnoreCase("setMode") == 0) {
+            
+            if (arg.length < 2) {
+                sender.sendMessage(ChatColor.RED + "Usage: /orelimiter setmode [VEIN|ORE]");
+                return true;
+            }
+            
+            OreLimiterMode mode = OreLimiterMode.valueOf(arg[1]);
+            
+            if (mode == null) {
+                sender.sendMessage(ChatColor.RED + "Supported modes: ORE, VEIN");
+                return true;
+            }
+     
+            oreLimiter.setOreLimiterMode(mode);
+            Bukkit.broadcastMessage(oreLimiter.getMessageStart() + "Mode was set to " + mode.name());
+            
+        }  
         
         
         return true;

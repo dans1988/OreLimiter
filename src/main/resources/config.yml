@@ -1,22 +1,23 @@
 enabled: true
+mode: VEIN
 goldOre:
     rate: 100
-    replacement: GLASS
+    replacement: STONE
 diamondOre:
     rate: 100
-    replacement: GLASS
+    replacement: STONE
 ironOre:
     rate: 100
-    replacement: GLASS
+    replacement: STONE
 lapisOre:
     rate: 100
-    replacement: GLASS
+    replacement: STONE
 coalOre:
     rate: 100
-    replacement: GLASS
+    replacement: STONE
 redstoneOre:
     rate: 100
-    replacement: GLASS
+    replacement: STONE
 quartzOre:
     rate: 100
-    replacement: GLASS
+    replacement: STONE
