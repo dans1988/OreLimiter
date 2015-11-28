@@ -1,0 +1,22 @@
+enabled: true
+goldOre:
+    rate: 100
+    replacement: GLASS
+diamondOre:
+    rate: 100
+    replacement: GLASS
+ironOre:
+    rate: 100
+    replacement: GLASS
+lapisOre:
+    rate: 100
+    replacement: GLASS
+coalOre:
+    rate: 100
+    replacement: GLASS
+redstoneOre:
+    rate: 100
+    replacement: GLASS
+quartzOre:
+    rate: 100
+    replacement: GLASS

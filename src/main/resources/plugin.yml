@@ -1,0 +1,16 @@
+name: OreLimiter
+main: pl.dans.plugins.ores.OreLimiter
+version: 1.0
+load: STARTUP
+
+commands:
+  oreLimiter:
+    description: Basic commands for OreLimiter
+    usage: /<command> <subcommand> [<value>]
+    permission: ol.basic
+    permission-message: You don't have <permission>
+    alias: ol
+permissions:
+    or.basic:
+        description: Allows use of the commands in the plugin
+        default: op
