@@ -19,7 +19,7 @@ public class OreLimiterPopulator extends BlockPopulator {
 
     private static final int CHUNK_HEIGHT_LIMIT = 128;
     private static final int BLOCKS_PER_CHUNK = 16;
-    private static final int RANDOM_BOUNDS = 101;
+    private static final int RANDOM_BOUNDS = 100;
     
     private final List<OreLocation> markedOres;
     private final OreLimiter oreLimiter;
@@ -54,7 +54,7 @@ public class OreLimiterPopulator extends BlockPopulator {
                         Map<Material, Material> replacements = oreLimiter.getReplacements();
                         
                         
-                        boolean replace = random.nextInt(RANDOM_BOUNDS) > oreLimiter.getOreRates().get(block.getType());
+                        boolean replace = random.nextInt(RANDOM_BOUNDS) >= oreLimiter.getOreRates().get(block.getType());
                         
                         if (OreLimiterMode.VEIN.equals(oreLimiter.getOreLimiterMode())) {
                         
