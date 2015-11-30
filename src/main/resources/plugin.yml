@@ -9,8 +9,7 @@ commands:
     usage: /<command> <subcommand> [<value>]
     permission: ol.basic
     permission-message: You don't have <permission>
-    alias: ol
 permissions:
-    or.basic:
+    ol.basic:
         description: Allows use of the commands in the plugin
         default: op
