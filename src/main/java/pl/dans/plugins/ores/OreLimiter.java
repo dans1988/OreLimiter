@@ -60,12 +60,12 @@ public class OreLimiter extends JavaPlugin {
             }
         }
 
-        replacements.put(Material.GOLD_ORE, Material.matchMaterial(configuration.getString("quartzOre.replacement")));
-        replacements.put(Material.DIAMOND_ORE, Material.matchMaterial(configuration.getString("quartzOre.replacement")));
-        replacements.put(Material.IRON_ORE, Material.matchMaterial(configuration.getString("quartzOre.replacement")));
-        replacements.put(Material.LAPIS_ORE, Material.matchMaterial(configuration.getString("quartzOre.replacement")));
-        replacements.put(Material.COAL_ORE, Material.matchMaterial(configuration.getString("quartzOre.replacement")));
-        replacements.put(Material.REDSTONE_ORE, Material.matchMaterial(configuration.getString("quartzOre.replacement")));
+        replacements.put(Material.GOLD_ORE, Material.matchMaterial(configuration.getString("goldOre.replacement")));
+        replacements.put(Material.DIAMOND_ORE, Material.matchMaterial(configuration.getString("diamondOre.replacement")));
+        replacements.put(Material.IRON_ORE, Material.matchMaterial(configuration.getString("ironOre.replacement")));
+        replacements.put(Material.LAPIS_ORE, Material.matchMaterial(configuration.getString("lapisOre.replacement")));
+        replacements.put(Material.COAL_ORE, Material.matchMaterial(configuration.getString("coalOre.replacement")));
+        replacements.put(Material.REDSTONE_ORE, Material.matchMaterial(configuration.getString("redstoneOre.replacement")));
         replacements.put(Material.QUARTZ_ORE, Material.matchMaterial(configuration.getString("quartzOre.replacement")));
 
         for (Material material : replacements.keySet()) {
